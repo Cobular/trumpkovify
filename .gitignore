@@ -215,6 +215,8 @@ pyvenv.cfg
 env/
 venv/
 ENV/
+linuxvenv
+node_modules
 env.bak/
 venv.bak/
 pip-selfcheck.json

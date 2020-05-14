@@ -7,20 +7,22 @@ import random
 app = Flask(__name__)
 
 speech_words = [
-    "liam should be locked up",
-    "penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman",
-    "chairs can be good or they can be sharp",
-    "the elementary school never expected the principal",
+    "nonono"
+    # "liam should be locked up",
+    # "penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman",
+    # "chairs can be good or they can be sharp",
+    # "the elementary school never expected the principal",
 ]
 
 speech_words_hash = [hashlib.sha1(i.encode("utf-8")).hexdigest() for i in speech_words]
 
 generated_words = [
-    "markov markov markov markov markov markov markov markov markov markov markov markov markov markov markov markov",
-    "keyboards are cool and sometimes colorful",
-    "tape measures can be used to attack people",
-    "lights are a property of matter said john",
-    "the sky is made of nitrogen but oxygen too",
+    "yesyesyes"
+    # "markov markov markov markov markov markov markov markov markov markov markov markov markov markov markov markov",
+    # "keyboards are cool and sometimes colorful",
+    # "tape measures can be used to attack people",
+    # "lights are a property of matter said john",
+    # "the sky is made of nitrogen but oxygen too",
 ]
 
 generated_words_hash = [
@@ -85,12 +87,11 @@ def random_confetti_options():
         }
     ]
     options.update(random.choice(origin_angle_options))
-    print(options)
     return options
 
 
-@app.route("/endpointSchmendpoint")
-def endpoint_schmendpoint():
+@app.route("/answerValidation")
+def answer_validation():
     button_no = request.args.get("button")
     button_hash = request.args.get("textHash")
     print(button_hash)
@@ -104,6 +105,26 @@ def endpoint_schmendpoint():
         return {"status": "incorrect", "confetti": confetti_options}
     print("Status: fail")
     return {"status": "fail", "confetti": confetti_options}
+
+
+@app.route("/newQuestion")
+def new_question():
+    speech = random.choice(speech_words)
+    generated = random.choice(generated_words)
+
+    if bool(random.getrandbits(1)):
+        response = {
+            "text1": speech,
+            "text2": generated
+        }
+
+    else:
+        response = {
+            "text1": generated,
+            "text2": speech
+        }
+
+    return response
 
 
 if __name__ == "__main__":

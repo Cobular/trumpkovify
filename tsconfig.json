@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "outDir": "static/js",
+    "rootDir": "static/ts",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "lf",
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "stripInternal": true,
+    "target": "ES3"
+  }
+}
