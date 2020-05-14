@@ -5,7 +5,7 @@
     "rootDir": "static/ts",
     "lib": [
       "DOM",
-      "ESNext"
+      "ES5"
     ],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -25,6 +25,6 @@
     "skipLibCheck": true,
     "strict": true,
     "stripInternal": true,
-    "target": "ES3"
+    "target": "ES5"
   }
 }

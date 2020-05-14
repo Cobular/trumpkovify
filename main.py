@@ -16,18 +16,9 @@ speech_words = [
 
 speech_words_hash = [hashlib.sha1(i.encode("utf-8")).hexdigest() for i in speech_words]
 
-generated_words = [
-    "yesyesyes"
-    # "markov markov markov markov markov markov markov markov markov markov markov markov markov markov markov markov",
-    # "keyboards are cool and sometimes colorful",
-    # "tape measures can be used to attack people",
-    # "lights are a property of matter said john",
-    # "the sky is made of nitrogen but oxygen too",
-]
 
-generated_words_hash = [
-    hashlib.sha1(i.encode("utf-8")).hexdigest() for i in generated_words
-]
+def return_generated_str():
+    return "yesyesyes"
 
 
 @app.route("/")
@@ -35,7 +26,7 @@ def root():
     # For the sake of example, use static information to inflate the template.
     # This will be replaced with real information in later steps.
     speech = random.choice(speech_words)
-    generated = random.choice(generated_words)
+    generated = return_generated_str()
 
     if bool(random.getrandbits(1)):
         text1 = speech
@@ -92,25 +83,23 @@ def random_confetti_options():
 
 @app.route("/answerValidation")
 def answer_validation():
+    """:returns correct when the returned hash is from the speech list, otherwise returns incorrect"""
     button_no = request.args.get("button")
     button_hash = request.args.get("textHash")
     print(button_hash)
     confetti_options = random_confetti_options()
     print(confetti_options)
-    if button_hash in generated_words_hash:
+    if button_hash in speech_words_hash:
         print("Status: correct")
         return {"status": "correct", "confetti": confetti_options}
-    if button_hash in speech_words_hash:
-        print("Status: incorrect")
-        return {"status": "incorrect", "confetti": confetti_options}
-    print("Status: fail")
-    return {"status": "fail", "confetti": confetti_options}
+    print("Status: incorrect")
+    return {"status": "incorrect", "confetti": confetti_options}
 
 
 @app.route("/newQuestion")
 def new_question():
     speech = random.choice(speech_words)
-    generated = random.choice(generated_words)
+    generated = return_generated_str()
 
     if bool(random.getrandbits(1)):
         response = {
