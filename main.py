@@ -3,6 +3,8 @@ import datetime
 from flask import Flask, render_template, request
 import hashlib
 import random
+import json
+from markov import return_final_string
 
 app = Flask(__name__)
 
@@ -16,9 +18,10 @@ speech_words = [
 
 speech_words_hash = [hashlib.sha1(i.encode("utf-8")).hexdigest() for i in speech_words]
 
-
-def return_generated_str():
-    return "yesyesyes"
+with open("first_word_corpus.json", "r") as first_word_corpus_file:
+    with open("word_dict.json", "r") as word_dict_file:
+        first_word_corpus = json.load(first_word_corpus_file)
+        word_dict = json.load(word_dict_file)
 
 
 @app.route("/")
@@ -26,7 +29,7 @@ def root():
     # For the sake of example, use static information to inflate the template.
     # This will be replaced with real information in later steps.
     speech = random.choice(speech_words)
-    generated = return_generated_str()
+    generated = return_final_string(first_word_corpus, word_dict)
 
     if bool(random.getrandbits(1)):
         text1 = speech
