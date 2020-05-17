@@ -94,14 +94,14 @@ def _make_string(first_words, word_dict) -> str:
     return output
 
 
-def return_generated_string(first_word_corpus: str, word_dict: dict) -> str:
+def return_final_string(first_word_corpus: str, word_dict: dict) -> str:
     output = _make_string(first_word_corpus, word_dict)
 
     if "." or "!" or "?" in output:
         output = output.split(".")
         output = ".".join(output[:-1]) + "."
     else:
-        return return_generated_string(first_word_corpus, word_dict)
+        return return_final_string(first_word_corpus, word_dict)
 
     tool = language_check.LanguageTool("en-GB")
     matches = tool.check(output)
@@ -110,31 +110,33 @@ def return_generated_string(first_word_corpus: str, word_dict: dict) -> str:
     if _is_readable(checked_output):
         return checked_output
     else:
-        return return_generated_string(first_word_corpus, word_dict)
+        return return_final_string(first_word_corpus, word_dict)
 
 
-# with open("corpus.json", "w") as corpus_file:
-#     corpus = make_corpus()
-#     json.dump(corpus, corpus_file)
+def _setup_corpi():
+    with open("corpus.json", "w") as corpus_file:
+        corpus = make_corpus()
+        json.dump(corpus, corpus_file)
 
-# with open("first_word_corpus.json", "w") as first_word_corpus_file:
-#     with open("corpus.json", "r") as corpus_file:
-#         corpus = json.load(corpus_file)
-#         first_word_corpus = make_first_words(corpus)
-#         json.dump(first_word_corpus, first_word_corpus_file)
+    with open("first_word_corpus.json", "w") as first_word_corpus_file:
+        with open("corpus.json", "r") as corpus_file:
+            corpus = json.load(corpus_file)
+            first_word_corpus = make_first_words(corpus)
+            json.dump(first_word_corpus, first_word_corpus_file)
 
-# with open("word_dict.json", "w") as word_dict_file:
-#     with open("corpus.json", "r") as corpus_file:
-#         corpus = json.load(corpus_file)
-#         word_dict = make_word_dict(corpus)
-#         json.dump(word_dict, word_dict_file)
+    with open("word_dict.json", "w") as word_dict_file:
+        with open("corpus.json", "r") as corpus_file:
+            corpus = json.load(corpus_file)
+            word_dict = make_word_dict(corpus)
+            json.dump(word_dict, word_dict_file)
 
 
-with open("first_word_corpus.json", "r") as first_word_corpus_file:
-    with open("word_dict.json", "r") as word_dict_file:
-        first_word_corpus = json.load(first_word_corpus_file)
-        word_dict = json.load(word_dict_file)
+if __name__ == '__main__':
+    with open("first_word_corpus.json", "r") as first_word_corpus_file:
+        with open("word_dict.json", "r") as word_dict_file:
+            first_word_corpus = json.load(first_word_corpus_file)
+            word_dict = json.load(word_dict_file)
 
-        for i in range(10):
-            str = return_generated_string(first_word_corpus, word_dict)
-            print(str)
+            for i in range(10):
+                string = return_final_string(first_word_corpus, word_dict)
+                print(string)
