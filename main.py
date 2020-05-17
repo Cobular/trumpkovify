@@ -49,33 +49,24 @@ def random_confetti_options():
         "startVelocity": random.randint(55, 75),
         "particleCount": random.randint(60, 90),
         "disableForReducedMotion": True,
-        "gravity": random.uniform(0.7, 1.3)
+        "gravity": random.uniform(0.7, 1.3),
     }
     origin_angle_options = [
         {
-            "origin": {
-                "x": 0.5,
-                "y": 1
-            },
+            "origin": {"x": 0.5, "y": 1},
             "angle": random.randint(80, 100),
-            "spread": random.randint(40, 60)
+            "spread": random.randint(40, 60),
         },
         {
-            "origin": {
-                "x": 1,
-                "y": 1
-            },
+            "origin": {"x": 1, "y": 1},
             "angle": random.randint(120, 150),
-            "spread": random.randint(40, 60)
+            "spread": random.randint(40, 60),
         },
         {
-            "origin": {
-                "x": 0,
-                "y": 1
-            },
+            "origin": {"x": 0, "y": 1},
             "angle": random.randint(33, 60),
-            "spread": random.randint(40, 60)
-        }
+            "spread": random.randint(40, 60),
+        },
     ]
     options.update(random.choice(origin_angle_options))
     return options
@@ -102,16 +93,10 @@ def new_question():
     generated = return_generated_str()
 
     if bool(random.getrandbits(1)):
-        response = {
-            "text1": speech,
-            "text2": generated
-        }
+        response = {"text1": speech, "text2": generated}
 
     else:
-        response = {
-            "text1": generated,
-            "text2": speech
-        }
+        response = {"text1": generated, "text2": speech}
 
     return response
 
