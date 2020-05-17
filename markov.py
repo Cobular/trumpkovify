@@ -101,7 +101,7 @@ def return_generated_string(first_word_corpus: str, word_dict: dict) -> str:
         output = output.split(".")
         output = ".".join(output[:-1]) + "."
     else:
-        return_generated_string(first_word_corpus, word_dict)
+        return return_generated_string(first_word_corpus, word_dict)
 
     tool = language_check.LanguageTool("en-GB")
     matches = tool.check(output)
@@ -110,7 +110,7 @@ def return_generated_string(first_word_corpus: str, word_dict: dict) -> str:
     if _is_readable(checked_output):
         return checked_output
     else:
-        return_generated_string(first_word_corpus, word_dict)
+        return return_generated_string(first_word_corpus, word_dict)
 
 
 # with open("corpus.json", "w") as corpus_file:
@@ -137,4 +137,4 @@ with open("first_word_corpus.json", "r") as first_word_corpus_file:
 
         for i in range(10):
             str = return_generated_string(first_word_corpus, word_dict)
-            # print(str)
+            print(str)
