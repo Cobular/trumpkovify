@@ -2,7 +2,7 @@
   "compilerOptions": {
     "declaration": false,
     "outDir": "static/js",
-    "rootDir": "static/ts",
+//    "rootDir": "static/ts",
     "lib": [
       "DOM",
       "ES5"
@@ -11,8 +11,8 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "classic",
     "newLine": "lf",
     "noEmitOnError": true,
     "noImplicitAny": true,
@@ -21,10 +21,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "pretty": true,
-    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "stripInternal": true,
-    "target": "ES5"
+    "target": "ES5",
+    "allowJs": true,
+    "sourceMap": true
   }
 }

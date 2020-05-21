@@ -1,6 +1,7 @@
 import confetti from "canvas-confetti";
 import $ from "jquery";
 import { JakeIsBabyRage, JakeIsGainingCompetence } from "./types";
+import sha1 from "sha1"
 
 const answeredEvent = new CustomEvent("answeredEvent")
 
@@ -20,7 +21,7 @@ function createMoarButtonsPlease(numberPlease: number) {
         const text = $(domText).text();
         const data: JakeIsGainingCompetence = {
             button: jakesButtonBoy,
-            textHash: text.toLowerCase().trim(),
+            textHash: sha1(text.toLowerCase().trim()),
         };
         $.getJSON("/answerValidation", data, (d: JakeIsBabyRage) => {
             buttonCallback(d);

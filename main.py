@@ -9,7 +9,7 @@ from markov import return_final_string
 app = Flask(__name__)
 
 speech_words = [
-    "nonono"
+    "speechspeechspeech"
     # "liam should be locked up",
     # "penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman penisman",
     # "chairs can be good or they can be sharp",
@@ -93,7 +93,7 @@ def answer_validation():
 @app.route("/newQuestion")
 def new_question():
     speech = random.choice(speech_words)
-    generated = return_generated_str()
+    generated = return_final_string(first_word_corpus, word_dict)
 
     if bool(random.getrandbits(1)):
         response = {"text1": speech, "text2": generated}

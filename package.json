@@ -10,13 +10,14 @@
     "canvas-confetti": "^1.2.0",
     "charenc": "0.0.2",
     "crypt": "0.0.2",
+    "jquery": "^3.5.1",
     "random-int": "^2.0.1",
     "sha1": "^1.1.1",
     "typescript": "^3.9.2"
   },
+  "private": true,
   "name": "bootstrap_test_2",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,5 +31,10 @@
     "url": "https://github.com/JakeCover/trumpkovify/issues"
   },
   "homepage": "https://github.com/JakeCover/trumpkovify#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "ts-loader": "^7.0.4",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
 }
