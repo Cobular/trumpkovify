@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<div class="container">
+<div class="container" style="padding-top: 1vw;">
     <div class="jumbotron">
 {#        <h1 class="linear-wipe">Trumpkov</h1>#}
 {#        <p>One of the two text samples below is a sample from a speech given by our Big Wet President,#}
@@ -28,10 +28,10 @@
     <div class="row">
         <div class="col-sm-6">
             <a href="#" id="button1">
-                <div class="card hoverable">
-                    <div class="card-body">
+                <div class="card hoverable" style="background: #9c0e0e;">
+                    <div class="card-body" >
                         <h4 class="card-title">Text Sample 1</h4>
-                        <div class="card-body" id="text_1">
+                        <div class="card-body" id="text_1" style="color: black;">
                             {{ text_1 }}
                         </div>
                     </div>
@@ -40,10 +40,10 @@
         </div>
         <div class="col-sm-6">
             <a href="#" id="button2">
-                <div class="card hoverable">
+                <div class="card hoverable" style="background:#0e239c;">
                     <div class="card-body">
                         <h4 class="card-title">Text Sample 2</h4>
-                        <div class="card-body" id="text_2">
+                        <div class="card-body" id="text_2" style="color: black;">
                             {{ text_2 }}
                         </div>
                     </div>
