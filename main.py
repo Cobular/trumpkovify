@@ -80,9 +80,9 @@ def answer_validation():
     """:returns correct when the returned hash is from the speech list, otherwise returns incorrect"""
     button_no = request.args.get("button")
     button_hash = request.args.get("textHash")
-    print(button_hash)
+    # print(button_hash)
     confetti_options = random_confetti_options()
-    print(confetti_options)
+    # print(confetti_options)
     if button_hash in speech_words_hash:
         print("Status: correct")
         return {"status": "correct", "confetti": confetti_options}
@@ -94,7 +94,7 @@ def answer_validation():
 def new_question():
     speech = random.choice(speech_words)
     generated = return_final_string(first_word_corpus, word_dict)
-
+    print(generated)
     if bool(random.getrandbits(1)):
         response = {"text1": speech, "text2": generated}
 
