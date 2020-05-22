@@ -1,9 +1,13 @@
 body {
   font-family: "helvetica", sans-serif;
-  text-align: center; }
+  text-align: center;
+  background: #333333; }
 
 h1 {
   font-size: 10rem; }
+
+h4 {
+  color: #000; }
 
 .linear-wipe {
   text-align: center;
@@ -25,11 +29,18 @@ h1 {
   to {
     background-position: 200% center; } }
 .hoverable {
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.4s;
   border-radius: 10px;
-  border: 1px solid #ccc;
-  background: #fff; }
+  border: 1px solid #000; }
   .hoverable:hover {
-    box-shadow: 0 0 7px rgba(33, 33, 33, 0.2); }
+    box-shadow: 0 0 0.75vw rgba(18, 18, 18, 0.95); }
+
+a:link {
+  text-decoration: none; }
+
+.bottom-link {
+  color: #b3b3b3; }
+  .bottom-link:hover {
+    color: #707070; }
 
 /*# sourceMappingURL=style.css.map */
