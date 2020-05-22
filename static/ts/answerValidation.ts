@@ -1,14 +1,15 @@
 import confetti from "canvas-confetti";
 import $ from "jquery";
-import { JakeIsBabyRage, JakeIsGainingCompetence } from "./types";
+import {JakeIsBabyRage, JakeIsGainingCompetence} from "./types";
 import sha1 from "sha1"
-
-const answeredEvent = new CustomEvent("answeredEvent")
 
 function buttonCallback(data: JakeIsBabyRage): void {
     if (data.status === "correct") {
         confetti(data.confetti);
-        dispatchEvent(answeredEvent);
+        $.getJSON("/newQuestion", (d: { text1: string, text2: string }) => {
+            $("#text_1").text(d.text1);
+            $("#text_2").text(d.text2);
+        })
     }
 }
 

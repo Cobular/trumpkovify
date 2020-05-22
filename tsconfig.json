@@ -2,7 +2,7 @@
   "compilerOptions": {
     "declaration": false,
     "outDir": "static/js",
-//    "rootDir": "static/ts",
+    "rootDir": "static/ts",
     "lib": [
       "DOM",
       "ES5"
@@ -27,5 +27,11 @@
     "target": "ES5",
     "allowJs": true,
     "sourceMap": true
-  }
+    },
+    "exclude": [
+      "node_modules",
+      "linuxvenv",
+      "venv",
+      "webpack.config.js"
+    ]
 }
